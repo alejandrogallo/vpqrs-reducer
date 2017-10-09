@@ -20,7 +20,7 @@ def print_cc4s_tensor(element, base, basis, g, G):
     print('if (%s) {' % element_tensor)
     print('  // %s = %s * %s' % (element, g, base))
     print('''\
-  LOG(1, "CoulombIntegrals") << "Evaluating"
+  LOG(1, "CoulombIntegrals") << "Evaluating "
                              << %s->get_name() << " using "
                              << %s->get_name() << std::endl;
 ''' % (element_tensor, base_tensor) )
