@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from vpqrsreducer import *
+from cc4s import *
 
 antisymmetric = True
 G = G_real
-min_dim = 1
+min_dim = 6
 target_space = SPACE
 model_space = SPACE
 
@@ -28,9 +29,10 @@ basis = {
     'vvvv',
     'vvvo'
 }
-print(basis)
-# print(get_independent_basis(basis, G))
+print('Initial basis: %s' % basis)
 basis, dependent_elements = get_independent_basis(basis, G)
-print(basis, dependent_elements)
+print('Cleaned basis: %s, %s' %(basis, dependent_elements))
 print_transformation_table(basis, target_space, G)
+print_cc4s_code(basis, target_space, G)
 
+#vim-run: make cc4s-real

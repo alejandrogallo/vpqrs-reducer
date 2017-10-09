@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 
 from vpqrsreducer import *
+from cc4s import *
 
 antisymmetric = True
 G = G_complex
-min_dim = 1
+min_dim = 6
 target_space = SPACE
 model_space = SPACE
 
@@ -18,15 +19,15 @@ basis = find_generating_basis(
 # print_transformation_table(basis, target_space, G)
 
 basis = {
-    'vovo',
     'vvoo',
     'oovv',
     'voov',
+    'vovo',
     'oooo',
     'ooov',
     'vooo',
     'vvvv',
-    'vvvo'
+    'vovv',
 }
 print(basis)
 # print(get_independent_basis(basis, G))
@@ -34,3 +35,5 @@ basis, dependent_elements = get_independent_basis(basis, G)
 print(basis, dependent_elements)
 print_transformation_table(basis, target_space, G)
 
+
+#vim-run: make cc4s-complex
