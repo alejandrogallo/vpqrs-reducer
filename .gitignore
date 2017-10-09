@@ -1,1 +1,3 @@
 scripts/vpqrsreducer
+out/
+.vim-run
