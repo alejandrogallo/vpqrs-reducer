@@ -34,6 +34,6 @@ print(basis)
 basis, dependent_elements = get_independent_basis(basis, G)
 print(basis, dependent_elements)
 print_transformation_table(basis, target_space, G)
-
+print_cc4s_code(basis, target_space, G)
 
 #vim-run: make cc4s-complex

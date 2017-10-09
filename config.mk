@@ -6,6 +6,9 @@ TEST_COMMAND = $(PYTHON) -m doctest vpqrsreducer/*.py ; \
 
 .PHONY: cc4s-real
 
+out:
+	mkdir out
+
 scripts/vpqrsreducer:
 	(cd scripts/ ; ln -s ../vpqrsreducer/ .)
 
@@ -15,8 +18,9 @@ scripts/vpqrsreducer:
 #
 ## HELP
 
-cc4s-real: scripts/vpqrsreducer ## Create real integrals for cc4s
-	$(PYTHON) scripts/cc4s-real.py
+cc4s-real: out scripts/vpqrsreducer ## Create real integrals for cc4s
+	$(PYTHON) scripts/$@.py | tee out/$@.out
+	$(SED) -n '/if .*/,$$ p' out/$@.out > out/$@.cpp
 
-cc4s-complex: scripts/vpqrsreducer ## Create complex integrals for cc4s
-	$(PYTHON) scripts/cc4s-complex.py
+cc4s-complex: out scripts/vpqrsreducer ## Create complex integrals for cc4s
+	$(PYTHON) scripts/$@.py | tee out/$@.out
