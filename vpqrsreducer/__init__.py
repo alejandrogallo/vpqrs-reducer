@@ -281,43 +281,6 @@ G_real = G_complex + [hl, hr]
 SPACE = {"".join(d) for d in itertools.product('vo', repeat=4)}
 
 
-if __name__ == "__main__":
-    CANDIDATES = {"oovv", "ovoo", "ovov", "voov", "ovvv"}
-    antisymmetric = True
-    G = G_complex
-    G = G_real
-    min_dim = 1
-    target_space = CANDIDATES
-    target_space = SPACE
-    model_space = SPACE - target_space
-    model_space = SPACE
-
-    print('\n{:^80}\n'.format('REAL CASE'))
-    basis = find_generating_basis(
-        target_space, model_space, G, min_dim=min_dim,
-        antisymmetric=antisymmetric, antisymmetrizer=vb
-    )
-
-    # print_transformation_table(basis, target_space, G)
-
-    basis = {
-        'vovo',
-        'vvoo',
-        'oovv',
-        'voov',
-        'oooo',
-        'ooov',
-        'vooo',
-        'vvvv',
-        'vvvo'
-    }
-    print(basis)
-    # print(get_independent_basis(basis, G))
-    basis, dependent_elements = get_independent_basis(basis, G)
-    print(basis, dependent_elements)
-    print_transformation_table(basis, target_space, G)
-
-
 # vim-run: python3 %
 # vim-run: pytest %
 # vim-run: python3 -m doctest % && flake8 % && python3 %

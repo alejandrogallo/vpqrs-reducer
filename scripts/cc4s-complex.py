@@ -4,12 +4,12 @@
 from vpqrsreducer import *
 
 antisymmetric = True
-G = G_real
+G = G_complex
 min_dim = 1
 target_space = SPACE
 model_space = SPACE
 
-print('\n{:^80}\n'.format('REAL CASE'))
+print('\n{:^80}\n'.format('COMPLEX CASE'))
 basis = find_generating_basis(
     target_space, model_space, G, min_dim=min_dim,
     antisymmetric=antisymmetric, antisymmetrizer=vb
