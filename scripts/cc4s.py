@@ -58,4 +58,3 @@ def print_cc4s_tensor(element, base, basis, g, G):
 
     print("}")
 
-#vim-run: make cc4s-real ; vi out/cc4s-real.cpp

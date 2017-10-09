@@ -24,3 +24,4 @@ cc4s-real: out scripts/vpqrsreducer ## Create real integrals for cc4s
 
 cc4s-complex: out scripts/vpqrsreducer ## Create complex integrals for cc4s
 	$(PYTHON) scripts/$@.py | tee out/$@.out
+	$(SED) -n '/if .*/,$$ p' out/$@.out > out/$@.cpp
