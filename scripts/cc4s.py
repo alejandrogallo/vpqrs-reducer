@@ -30,7 +30,7 @@ def print_cc4s_tensor(element, base, basis, g, G, complex_version=False):
         if re.match(r"h", str(g)):
             fconj = ', fconj'
         print(
-            '  {0}->sum(1.0, {2}, "{3}", 0.0, "{1}"{4});'.format(
+            '  {0}->sum(1.0, *{2}, "{3}", 0.0, "{1}"{4});'.format(
                 element_tensor,
                 element_indices,
                 base_tensor,
@@ -59,7 +59,7 @@ def print_cc4s_tensor(element, base, basis, g, G, complex_version=False):
         if re.match(r"h", str(g)):
             fconj = ', fconj'
         print(
-            '    {0}->sum(-1.0, {2}, "{3}", 1.0, "{1}"{4});'.format(
+            '    {0}->sum(-1.0, *{2}, "{3}", 1.0, "{1}"{4});'.format(
                 element_tensor,
                 element_indices,
                 base_tensor,
@@ -86,3 +86,4 @@ def print_cc4s_tensor(element, base, basis, g, G, complex_version=False):
 
     print("}")
 
+#vim-run: make cc4s-complex
