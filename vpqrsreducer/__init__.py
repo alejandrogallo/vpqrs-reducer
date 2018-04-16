@@ -150,17 +150,18 @@ def get_independent_basis(basis, G):
     """Discover dependencies in within the basis with the action G
     """
     new_basis = set()
+    old_basis = set(basis)
     dependent_elements = set()
-    for j in range(len(basis)):
-        if len(basis) == 0:
+    for j in range(len(old_basis)):
+        if len(old_basis) == 0:
             break
-        b = basis.pop()
+        b = old_basis.pop()
         for g in G:
             h = g * b
             if b == h:
                 continue
-            elif h in basis:
-                basis.remove(h)
+            elif h in old_basis:
+                old_basis.remove(h)
                 dependent_elements.add(h)
         new_basis.add(b)
     return (new_basis, dependent_elements)
