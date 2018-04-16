@@ -18,6 +18,7 @@ basis = find_generating_basis(
 
 # print_transformation_table(basis, target_space, G)
 
+# This basis is not the smallest
 basis = {
     'vvoo',
     'oovv',

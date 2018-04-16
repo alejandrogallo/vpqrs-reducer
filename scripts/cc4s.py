@@ -86,4 +86,23 @@ def print_cc4s_tensor(element, base, basis, g, G, complex_version=False):
 
     print("}")
 
+
+def print_tensor_definitions(target, complex_version=False):
+    for element in target:
+        element_tensor = 'V%s' % string_to_particle_indices(element)
+        element_indices = string_to_particle_indices(element)
+        print(
+            "CTF::Tensor<{type}> *{name}(\n"
+            "  isArgumentGiven(\"{PHPH}CoulombIntegrals\") ?\n"
+            "  new CTF::Tensor<{type}>(4, {element}.data(), "
+            "syms.data(), *Cc4s::world, \"{name}\"):\n"
+            "  nullptr\n"
+            ");".format(
+                name=element_tensor,
+                PHPH=element.replace('v', 'P').replace('o', 'H'),
+                element=element,
+                type='complex'if complex_version else 'double'
+            )
+        )
+
 #vim-run: make cc4s-complex
