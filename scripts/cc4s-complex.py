@@ -30,14 +30,25 @@ basis = {
     'vvvv',
     'vovv',
 }
-print(basis)
-# print(get_independent_basis(basis, G))
-basis, dependent_elements = get_independent_basis(basis, G)
-print(basis, dependent_elements)
+print('Fixed  basis:', basis)
+print('Basis length:', len(basis))
+cleaned_basis, dependent_elements = get_independent_basis(basis, G)
+print("2 dependent elements in basis:")
+print(dependent_elements)
+
+target_space = SPACE - basis
+print('Target space:')
+print(target_space)
+print('Target space length:', len(target_space))
+
 print_transformation_table(basis, target_space, G)
+print()
+
+print_tensor_definitions(target_space, complex_version=True)
 print_cc4s_code(
     basis, target_space, G, complex_version=True
 )
 
+#vim-run: make cc4s-complex ; vi +'set ft=cpp' out/cc4s-complex.out
 #vim-run: make cc4s-complex
 #vim-run: make cc4s-complex ; vi out/cc4s-complex.cpp
