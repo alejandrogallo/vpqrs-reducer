@@ -29,6 +29,8 @@ def print_cc4s_tensor(element, base, basis, g, G, complex_version=False):
     if complex_version:
         if re.match(r"h", str(g)):
             fconj = ', fConj'
+        else:
+            fconj = ''
         print(
             '  {0}->sum(1.0, *{2}, "{3}", 0.0, "{1}"{4});'.format(
                 element_tensor,
@@ -56,8 +58,10 @@ def print_cc4s_tensor(element, base, basis, g, G, complex_version=False):
     base_indices = anti_ginv % vb * string_to_particle_indices(element)
     print('    // %s = %s * %s' % (anti, anti_g, anti_b))
     if complex_version:
-        if re.match(r"h", str(g)):
+        if re.match(r"h", str(anti_g)):
             fconj = ', fConj'
+        else:
+            fconj = ''
         print(
             '    {0}->sum(-1.0, *{2}, "{3}", 1.0, "{1}"{4});'.format(
                 element_tensor,
